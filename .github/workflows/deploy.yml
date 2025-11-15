@@ -12,6 +12,11 @@ on:
     branches: [main]
   # workflow_dispatch: # Manual trigger only
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -20,9 +25,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
+
       - run: npm install
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist
