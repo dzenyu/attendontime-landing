@@ -6,11 +6,11 @@ on:
   #     - main
   # Automatic triggers have been disabled to allow manual control of E2E test execution
   # Uncomment the following lines to re-enable automatic triggers on push/PR events:
-  # push:
-  #   branches: [main]
-  # pull_request:
-  #   branches: [main]
-  workflow_dispatch: # Manual trigger only
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # workflow_dispatch: # Manual trigger only
 
 jobs:
   deploy:
@@ -19,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
       - run: npm install
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v3
