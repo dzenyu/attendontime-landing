@@ -1,5 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Heart, Sparkles, Instagram } from "lucide-react";
+
+const sparklePositions = Array.from({ length: 30 }, () => ({
+  left: `${Math.random() * 100}%`,
+  top: `${Math.random() * 100}%`,
+  animationDelay: `${Math.random() * 3}s`,
+  animationDuration: `${2 + Math.random() * 2}s`,
+  size: Math.random() * 20 + 10,
+}));
 
 const PajamaSoiree = () => {
   useEffect(() => {
@@ -16,20 +24,20 @@ const PajamaSoiree = () => {
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
       {/* Animated sparkles background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(30)].map((_, i) => (
+        {sparklePositions.map((pos, i) => (
           <div
             key={i}
             className="absolute animate-pulse"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${2 + Math.random() * 2}s`,
+              left: pos.left,
+              top: pos.top,
+              animationDelay: pos.animationDelay,
+              animationDuration: pos.animationDuration,
             }}
           >
             <Sparkles
               className="text-white/40"
-              size={Math.random() * 20 + 10}
+              size={pos.size}
             />
           </div>
         ))}
