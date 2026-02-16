@@ -111,10 +111,12 @@ const PajamaSoiree = () => {
     setMetaTag('twitter:image', imageUrl);
 
     // Add structured data
-    let structuredDataScript = document.querySelector('script[type="application/ld+json"]');
+    const scriptId = 'pajama-soiree-event';
+    let structuredDataScript = document.querySelector(`script[type="application/ld+json"][data-id="${scriptId}"]`);
     if (!structuredDataScript) {
       structuredDataScript = document.createElement('script');
       structuredDataScript.setAttribute('type', 'application/ld+json');
+      structuredDataScript.setAttribute('data-id', scriptId);
       document.head.appendChild(structuredDataScript);
     }
     structuredDataScript.textContent = JSON.stringify(structuredData);
