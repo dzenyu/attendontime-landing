@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Heart, Sparkles, Instagram } from "lucide-react";
 
 const sparklePositions = Array.from({ length: 30 }, () => ({
@@ -10,15 +10,128 @@ const sparklePositions = Array.from({ length: 30 }, () => ({
 }));
 
 const PajamaSoiree = () => {
+  const pageUrl = "https://attendontime.com/pajama-soiree";
+  const imageUrl = "https://attendontime.com/payment-pajama-soiree.png";
+  const eventTitle = "Elevated Love Letter to a Young Sister - Pajama Soiree";
+  const eventDescription = "Join us for an inspiring Pajama Soiree on March 28, 2026, in Frisco, TX. Interactive sessions on women's health, financial literacy, estate planning, and empowerment. Enjoy live music, curated cuisine, and meaningful conversations. Rock your RED or PINK pajamas!";
+
+  const structuredData = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": eventTitle,
+    "description": eventDescription,
+    "startDate": "2026-03-28T17:30:00-06:00",
+    "endDate": "2026-03-28T22:00:00-06:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Founders Hall - Canals at Grand Park",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7878 Washburn Drive",
+        "addressLocality": "Frisco",
+        "addressRegion": "TX",
+        "postalCode": "75034",
+        "addressCountry": "US"
+      }
+    },
+    "image": [imageUrl],
+    "organizer": {
+      "@type": "Organization",
+      "name": "Mujoy Events",
+      "url": "https://www.instagram.com/lovelettertoayoungsister/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": pageUrl,
+      "price": "100",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01"
+    },
+    "performer": [
+      {
+        "@type": "Person",
+        "name": "Dr. Naima Bridges",
+        "jobTitle": "MD, FACOG"
+      },
+      {
+        "@type": "Person",
+        "name": "Princess Mpati",
+        "jobTitle": "Regional Director, CVS Health"
+      },
+      {
+        "@type": "Person",
+        "name": "Dr. Dami Babaniji",
+        "jobTitle": "DO, VIP Lippy"
+      },
+      {
+        "@type": "Person",
+        "name": "Dorscharica Jefferson",
+        "jobTitle": "Wisdom Matters"
+      }
+    ]
+  }), [eventTitle, eventDescription, pageUrl, imageUrl]);
+
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://js.stripe.com/v3/buy-button.js";
-    script.async = true;
-    document.head.appendChild(script);
-    return () => {
-      document.head.removeChild(script);
+    // Set page title
+    document.title = eventTitle;
+
+    // Helper function to set or update meta tags
+    const setMetaTag = (property: string, content: string, isProperty = false) => {
+      const attribute = isProperty ? 'property' : 'name';
+      let element = document.querySelector(`meta[${attribute}="${property}"]`);
+      
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attribute, property);
+        document.head.appendChild(element);
+      }
+      
+      element.setAttribute('content', content);
     };
-  }, []);
+
+    // Set meta tags
+    setMetaTag('title', eventTitle);
+    setMetaTag('description', eventDescription);
+
+    // Open Graph tags
+    setMetaTag('og:type', 'website', true);
+    setMetaTag('og:url', pageUrl, true);
+    setMetaTag('og:title', eventTitle, true);
+    setMetaTag('og:description', eventDescription, true);
+    setMetaTag('og:image', imageUrl, true);
+
+    // Twitter Card tags
+    setMetaTag('twitter:card', 'summary_large_image');
+    setMetaTag('twitter:url', pageUrl);
+    setMetaTag('twitter:title', eventTitle);
+    setMetaTag('twitter:description', eventDescription);
+    setMetaTag('twitter:image', imageUrl);
+
+    // Add structured data
+    const scriptId = 'pajama-soiree-event';
+    let structuredDataScript = document.querySelector(`script[type="application/ld+json"][data-id="${scriptId}"]`);
+    if (!structuredDataScript) {
+      structuredDataScript = document.createElement('script');
+      structuredDataScript.setAttribute('type', 'application/ld+json');
+      structuredDataScript.setAttribute('data-id', scriptId);
+      document.head.appendChild(structuredDataScript);
+    }
+    structuredDataScript.textContent = JSON.stringify(structuredData);
+
+    // Load Stripe script
+    const stripeScript = document.createElement("script");
+    stripeScript.src = "https://js.stripe.com/v3/buy-button.js";
+    stripeScript.async = true;
+    document.head.appendChild(stripeScript);
+
+    // Cleanup function
+    return () => {
+      document.head.removeChild(stripeScript);
+    };
+  }, [eventTitle, eventDescription, pageUrl, imageUrl, structuredData]);
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
