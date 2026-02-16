@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Heart, Sparkles, Instagram } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 const sparklePositions = Array.from({ length: 30 }, () => ({
   left: `${Math.random() * 100}%`,
@@ -20,8 +21,99 @@ const PajamaSoiree = () => {
     };
   }, []);
 
+  const pageUrl = "https://attendontime.com/pajama-soiree";
+  const imageUrl = "https://attendontime.com/payment-pajama-soiree.png";
+  const eventTitle = "Elevated Love Letter to a Young Sister - Pajama Soiree";
+  const eventDescription = "Join us for an inspiring Pajama Soiree on March 28, 2026, in Frisco, TX. Interactive sessions on women's health, financial literacy, estate planning, and empowerment. Enjoy live music, curated cuisine, and meaningful conversations. Rock your RED or PINK pajamas!";
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": eventTitle,
+    "description": eventDescription,
+    "startDate": "2026-03-28T17:30:00-06:00",
+    "endDate": "2026-03-28T22:00:00-06:00",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": "Founders Hall - Canals at Grand Park",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7878 Washburn Drive",
+        "addressLocality": "Frisco",
+        "addressRegion": "TX",
+        "postalCode": "75034",
+        "addressCountry": "US"
+      }
+    },
+    "image": [imageUrl],
+    "organizer": {
+      "@type": "Organization",
+      "name": "Mujoy Events",
+      "url": "https://www.instagram.com/lovelettertoayoungsister/"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": pageUrl,
+      "price": "100",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-01-01"
+    },
+    "performer": [
+      {
+        "@type": "Person",
+        "name": "Dr. Naima Bridges",
+        "jobTitle": "MD, FACOG"
+      },
+      {
+        "@type": "Person",
+        "name": "Princess Mpati",
+        "jobTitle": "Regional Director, CVS Health"
+      },
+      {
+        "@type": "Person",
+        "name": "Dr. Dami Babaniji",
+        "jobTitle": "DO, VIP Lippy"
+      },
+      {
+        "@type": "Person",
+        "name": "Dorscharica Jefferson",
+        "jobTitle": "Wisdom Matters"
+      }
+    ]
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
+    <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{eventTitle}</title>
+        <meta name="title" content={eventTitle} />
+        <meta name="description" content={eventDescription} />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:title" content={eventTitle} />
+        <meta property="og:description" content={eventDescription} />
+        <meta property="og:image" content={imageUrl} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={pageUrl} />
+        <meta name="twitter:title" content={eventTitle} />
+        <meta name="twitter:description" content={eventDescription} />
+        <meta name="twitter:image" content={imageUrl} />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(structuredData)}
+        </script>
+      </Helmet>
+
+      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
       {/* Animated sparkles background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {sparklePositions.map((pos, i) => (
@@ -232,7 +324,8 @@ const PajamaSoiree = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
