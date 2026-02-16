@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Heart, Sparkles, Instagram } from "lucide-react";
-import { Helmet } from "react-helmet-async";
 
 const sparklePositions = Array.from({ length: 30 }, () => ({
   left: `${Math.random() * 100}%`,
@@ -11,22 +10,12 @@ const sparklePositions = Array.from({ length: 30 }, () => ({
 }));
 
 const PajamaSoiree = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://js.stripe.com/v3/buy-button.js";
-    script.async = true;
-    document.head.appendChild(script);
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, []);
-
   const pageUrl = "https://attendontime.com/pajama-soiree";
   const imageUrl = "https://attendontime.com/payment-pajama-soiree.png";
   const eventTitle = "Elevated Love Letter to a Young Sister - Pajama Soiree";
   const eventDescription = "Join us for an inspiring Pajama Soiree on March 28, 2026, in Frisco, TX. Interactive sessions on women's health, financial literacy, estate planning, and empowerment. Enjoy live music, curated cuisine, and meaningful conversations. Rock your RED or PINK pajamas!";
 
-  const structuredData = {
+  const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "Event",
     "name": eventTitle,
@@ -83,37 +72,67 @@ const PajamaSoiree = () => {
         "jobTitle": "Wisdom Matters"
       }
     ]
-  };
+  }), [eventTitle, eventDescription, pageUrl, imageUrl]);
+
+  useEffect(() => {
+    // Set page title
+    document.title = eventTitle;
+
+    // Helper function to set or update meta tags
+    const setMetaTag = (property: string, content: string, isProperty = false) => {
+      const attribute = isProperty ? 'property' : 'name';
+      let element = document.querySelector(`meta[${attribute}="${property}"]`);
+      
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attribute, property);
+        document.head.appendChild(element);
+      }
+      
+      element.setAttribute('content', content);
+    };
+
+    // Set meta tags
+    setMetaTag('title', eventTitle);
+    setMetaTag('description', eventDescription);
+
+    // Open Graph tags
+    setMetaTag('og:type', 'website', true);
+    setMetaTag('og:url', pageUrl, true);
+    setMetaTag('og:title', eventTitle, true);
+    setMetaTag('og:description', eventDescription, true);
+    setMetaTag('og:image', imageUrl, true);
+
+    // Twitter Card tags
+    setMetaTag('twitter:card', 'summary_large_image');
+    setMetaTag('twitter:url', pageUrl);
+    setMetaTag('twitter:title', eventTitle);
+    setMetaTag('twitter:description', eventDescription);
+    setMetaTag('twitter:image', imageUrl);
+
+    // Add structured data
+    let structuredDataScript = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredDataScript) {
+      structuredDataScript = document.createElement('script');
+      structuredDataScript.setAttribute('type', 'application/ld+json');
+      document.head.appendChild(structuredDataScript);
+    }
+    structuredDataScript.textContent = JSON.stringify(structuredData);
+
+    // Load Stripe script
+    const stripeScript = document.createElement("script");
+    stripeScript.src = "https://js.stripe.com/v3/buy-button.js";
+    stripeScript.async = true;
+    document.head.appendChild(stripeScript);
+
+    // Cleanup function
+    return () => {
+      document.head.removeChild(stripeScript);
+    };
+  }, [eventTitle, eventDescription, pageUrl, imageUrl, structuredData]);
 
   return (
-    <>
-      <Helmet>
-        {/* Primary Meta Tags */}
-        <title>{eventTitle}</title>
-        <meta name="title" content={eventTitle} />
-        <meta name="description" content={eventDescription} />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={pageUrl} />
-        <meta property="og:title" content={eventTitle} />
-        <meta property="og:description" content={eventDescription} />
-        <meta property="og:image" content={imageUrl} />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={pageUrl} />
-        <meta name="twitter:title" content={eventTitle} />
-        <meta name="twitter:description" content={eventDescription} />
-        <meta name="twitter:image" content={imageUrl} />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
-
-      <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
       {/* Animated sparkles background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {sparklePositions.map((pos, i) => (
@@ -324,8 +343,7 @@ const PajamaSoiree = () => {
           </div>
         </div>
       </div>
-      </div>
-    </>
+    </div>
   );
 };
 
