@@ -1,6 +1,17 @@
+import { useEffect } from "react";
 import { Heart, Sparkles, Instagram } from "lucide-react";
 
 const PajamaSoiree = () => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://js.stripe.com/v3/buy-button.js";
+    script.async = true;
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-pink-200 via-pink-300 to-pink-400">
       {/* Animated sparkles background */}
@@ -45,7 +56,7 @@ const PajamaSoiree = () => {
               {/* Price overlay on envelope */}
               <div className="absolute bottom-1 left-1/2 -translate-x-1/2">
                 <p className="text-white text-2xl md:text-3xl font-bold drop-shadow-lg">
-                  $95/person
+                  $100/person
                 </p>
               </div>
             </div>
@@ -98,26 +109,26 @@ const PajamaSoiree = () => {
                 <p className="text-xs md:text-sm text-red-600">Regional Director, CVS Health</p>
               </div>
 
-              {/* Profile 3 - Dami Babanyji */}
+              {/* Profile 3 - Dami Babaniji */}
               <div className="flex flex-col items-center">
                 <img
-                  src="/profile-dami-babanyji.jpeg"
-                  alt="Dami Babanyji"
+                  src="/profile-dami-babaniji.jpeg"
+                  alt="Dami Babaniji"
                   className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-red-400 shadow-lg"
                 />
-                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dr. Dami Babanyji, DO</p>
+                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dr. Dami Babaniji, DO</p>
                 <p className="text-xs md:text-sm text-red-600">VIP Lippy</p>
               </div>
 
-              {/* Profile 4 - Dr. Dorscharika Jefferson */}
+              {/* Profile 4 - Dorscharica Jefferson */}
               <div className="flex flex-col items-center">
                 <img
-                  src="/profile-dorscharika-jefferson.jpeg"
-                  alt="Dr. Dorscharika Jefferson"
+                  src="/profile-dorscharica-jefferson.jpeg"
+                  alt="Dorscharica Jefferson"
                   className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-red-400 shadow-lg"
                 />
-                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dr. Dorscharika Jefferson</p>
-                <p className="text-xs md:text-sm text-red-600">PhD, MBA</p>
+                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dorscharica Jefferson</p>
+                <p className="text-xs md:text-sm text-red-600">Wisdom Matters</p>
               </div>
             </div>
           </div>
@@ -188,6 +199,15 @@ const PajamaSoiree = () => {
                 Deliciously Curated Cuisine & Meaningful Conversation
               </li>
             </ul>
+          </div>
+
+          {/* Stripe Pay Button */}
+          <div className="mb-8">
+            {/* @ts-expect-error Stripe Buy Button is a web component */}
+            <stripe-buy-button
+              buy-button-id="buy_btn_1T1FQDQHMV9e2XFOkr7TGno6"
+              publishable-key="pk_live_51StwwqQHMV9e2XFOoexZuEQ8c4DoGN2Ys0gLEyoQo0dqrSYXtQpDspJckoZot1XoaFAZzuz3gow9IUqsc9dVX4Ew00SKHhUOkL"
+            />
           </div>
 
           {/* Footer */}
