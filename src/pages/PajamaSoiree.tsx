@@ -209,7 +209,7 @@ const PajamaSoiree = () => {
             </p>
 
             {/* Speaker Profiles */}
-            <div className="flex items-start justify-center gap-8 mt-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-6 md:gap-8 mt-8">
               {/* Profile 1 - Dr. Naima Bridges */}
               <div className="flex flex-col items-center">
                 <img
