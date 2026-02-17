@@ -11,6 +11,7 @@ const sparklePositions = Array.from({ length: 30 }, () => ({
 
 const PajamaSoiree = () => {
   const [showMap, setShowMap] = useState(false);
+  const [showLoveLetter, setShowLoveLetter] = useState(false);
   const [linkCopied, setLinkCopied] = useState(false);
   const pageUrl = "https://attendontime.com/pajama-soiree";
   const imageUrl = "https://attendontime.com/payment-pajama-soiree.png";
@@ -164,17 +165,134 @@ const PajamaSoiree = () => {
       <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-pink-200/30 rounded-full blur-3xl" />
       <div className="absolute bottom-40 right-1/3 w-72 h-72 bg-pink-300/25 rounded-full blur-3xl" />
 
+      {/* Love Letter Overlay */}
+      {showLoveLetter && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in"
+          onClick={() => setShowLoveLetter(false)}
+        >
+          <div
+            className="relative max-w-2xl w-full max-h-[90vh] overflow-y-auto rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setShowLoveLetter(false)}
+              className="absolute top-3 right-3 z-10 bg-white/80 hover:bg-white rounded-full p-1.5 shadow-md transition-colors"
+              aria-label="Close love letter"
+            >
+              <X size={22} className="text-red-800" />
+            </button>
+
+            {/* Paper roll background with content */}
+            <div
+              className="relative bg-cover bg-center bg-no-repeat p-8 md:p-12"
+              style={{ backgroundImage: "url('/old-paper-roll-bg.jpg')" }}
+            >
+              <div className="text-red-900 font-serif space-y-4 text-center">
+                <p className="text-2xl">💌</p>
+                <h3 className="text-xl md:text-2xl font-bold leading-tight">
+                  LOVE LETTER TO A YOUNG SISTER
+                </h3>
+                <p className="text-lg md:text-xl font-semibold italic">
+                  The Pajama Soirée You Don't Want to Miss
+                </p>
+
+                <div className="space-y-3 text-base md:text-lg text-left leading-relaxed">
+                  <p>
+                    Sis… this is not just a pajama party.<br />
+                    This is a room full of powerful women.<br />
+                    This is elevation.<br />
+                    This is growth.<br />
+                    This is sisterhood done intentionally.
+                  </p>
+
+                  <p className="italic font-semibold text-center">
+                    Put on your RED or PINK pajamas — come bold, come soft, come radiant — and step into an atmosphere curated for impact.
+                  </p>
+
+                  <ul className="space-y-1.5">
+                    <li>❤️ Women's Health Conversations That Matter.</li>
+                    <li>❤️ Corporate Success & Career Elevation.</li>
+                    <li>❤️ Wellness & Personal Growth.</li>
+                    <li>❤️ Financial & Legacy Awareness.</li>
+                    <li>❤️ Empowerment Through Real, Lived Wisdom.</li>
+                    <li>❤️ Deliciously Curated Cuisine.</li>
+                    <li>❤️ Meaningful, Unfiltered Conversations.</li>
+                  </ul>
+
+                  <p>
+                    – We are talking truth.<br />
+                    – We are talking strategy.<br />
+                    – We are talking healing.<br />
+                    – We are talking next-level womanhood.
+                  </p>
+
+                  <p>
+                    Expect connection.<br />
+                    Expect clarity.<br />
+                    Expect to leave different.
+                  </p>
+
+                  <p>
+                    This is where faith meets excellence.<br />
+                    Where softness meets strength.<br />
+                    Where young sisters are reminded who they are.
+                  </p>
+
+                  <p className="italic font-semibold text-center">
+                    Spots are limited. The room will be intentional.
+                  </p>
+
+                  <p className="text-center">
+                    🎟 Purchase your ticket by clicking the link below.
+                  </p>
+
+                  <p>
+                    Secure your seat.<br />
+                    Bring your journal.<br />
+                    Wear the red.<br />
+                    Wear the pink.<br />
+                    Come ready.
+                  </p>
+
+                  <p className="font-semibold text-center">
+                    Because no sister rises alone. 💌
+                  </p>
+                </div>
+
+                {/* Purchase CTA */}
+                <button
+                  onClick={() => {
+                    setShowLoveLetter(false);
+                    document.getElementById("purchase-ticket")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="mt-4 inline-flex items-center gap-2 bg-red-700 hover:bg-red-800 text-white font-bold text-lg px-8 py-3 rounded-full shadow-lg transition-colors"
+                >
+                  <Heart className="fill-white" size={20} />
+                  Purchase Your Ticket
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-4 py-12 flex items-center justify-center min-h-screen">
         <div className="max-w-3xl w-full text-center animate-fade-in">
           {/* Love letter envelope illustration */}
           <div className="mb-8 flex justify-center items-center gap-6">
-            {/* Envelope Image with Price Overlay */}
-            <div className="relative">
-              <img 
-                src="/heart-envelope.png" 
+            {/* Envelope Image with Price Overlay - Clickable */}
+            <button
+              onClick={() => setShowLoveLetter(true)}
+              className="relative cursor-pointer group animate-envelope-glow"
+              aria-label="Open love letter"
+            >
+              <img
+                src="/heart-envelope.png"
                 alt="Love letter envelope with heart"
-                className="w-72 md:w-80 h-auto drop-shadow-2xl"
+                className="w-72 md:w-80 h-auto drop-shadow-2xl transition-transform duration-300 group-hover:scale-105 animate-envelope-bounce"
               />
               {/* Price overlay on envelope */}
               <div className="absolute bottom-1 left-1/2 -translate-x-1/2">
@@ -182,7 +300,15 @@ const PajamaSoiree = () => {
                   $100/person
                 </p>
               </div>
-            </div>
+              {/* Click hint - hover only on desktop */}
+              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm text-red-700 font-medium opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:inline">
+                Click to open letter
+              </span>
+              {/* Tap hint - always visible on mobile */}
+              <span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm text-red-700 font-medium whitespace-nowrap md:hidden">
+                Tap to open letter
+              </span>
+            </button>
             
             {/* Floating hearts */}
             <div className="flex flex-col gap-2 animate-float">
@@ -353,7 +479,7 @@ const PajamaSoiree = () => {
           </div>
 
           {/* Stripe Pay Button */}
-          <div className="mb-8">
+          <div id="purchase-ticket" className="mb-8">
             {/* @ts-expect-error Stripe Buy Button is a web component */}
             <stripe-buy-button
               buy-button-id="buy_btn_1T1FQDQHMV9e2XFOkr7TGno6"
