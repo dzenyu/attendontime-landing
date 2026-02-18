@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { Heart, Sparkles, Instagram, MapPin, X, Share2, Link, Check } from "lucide-react";
+import { speakers } from "../data/pajamaSoireeSpeakers";
 
 const sparklePositions = Array.from({ length: 30 }, () => ({
   left: `${Math.random() * 100}%`,
@@ -345,49 +346,17 @@ const PajamaSoiree = () => {
 
             {/* Speaker Profiles */}
             <div className="grid grid-cols-2 md:grid-cols-4 justify-items-center gap-6 md:gap-8 mt-8">
-              {/* Profile 1 - Dr. Naima Bridges */}
-              <div className="flex flex-col items-center">
-                <img
-                  src="/profile-naima-bridges.jpeg"
-                  alt="Dr. Naima Bridges"
-                  className="w-36 h-44 md:w-44 md:h-56 rounded-xl object-cover border-4 border-red-400 shadow-lg"
-                />
-                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dr. Naima Bridges</p>
-                <p className="text-xs md:text-sm text-red-600">MD, FACOG</p>
-              </div>
-
-              {/* Profile 2 - Princess Mpati */}
-              <div className="flex flex-col items-center">
-                <img
-                  src="/profile-princess-mpati.jpeg"
-                  alt="Princess Mpati"
-                  className="w-36 h-44 md:w-46 md:h-56 rounded-xl object-cover border-4 border-red-400 shadow-lg"
-                />
-                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Princess Mpati</p>
-                <p className="text-xs md:text-sm text-red-600">Regional Director, CVS Health</p>
-              </div>
-
-              {/* Profile 3 - Dami Babaniji */}
-              <div className="flex flex-col items-center">
-                <img
-                  src="/profile-dami-babaniji.jpeg"
-                  alt="Dami Babaniji"
-                  className="w-36 h-44 md:w-44 md:h-56 rounded-xl object-cover border-4 border-red-400 shadow-lg"
-                />
-                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dr. Dami Babaniji, DO</p>
-                <p className="text-xs md:text-sm text-red-600">VIP Lippy</p>
-              </div>
-
-              {/* Profile 4 - Dorscharica Jefferson */}
-              <div className="flex flex-col items-center">
-                <img
-                  src="/profile-dorscharica-jefferson.jpeg"
-                  alt="Dorscharica Jefferson"
-                  className="w-36 h-44 md:w-44 md:h-56 rounded-xl object-cover border-4 border-red-400 shadow-lg"
-                />
-                <p className="text-sm md:text-base font-semibold text-red-700 mt-2">Dorscharica Jefferson</p>
-                <p className="text-xs md:text-sm text-red-600">Wisdom Matters</p>
-              </div>
+              {speakers.map((speaker) => (
+                <div key={speaker.alt} className="flex flex-col items-center">
+                  <img
+                    src={speaker.image}
+                    alt={speaker.alt}
+                    className="w-36 h-44 md:w-44 md:h-56 rounded-xl object-cover border-4 border-red-400 shadow-lg"
+                  />
+                  <p className="text-sm md:text-base font-semibold text-red-700 mt-2">{speaker.name}</p>
+                  <p className="text-xs md:text-sm text-red-600">{speaker.title}</p>
+                </div>
+              ))}
             </div>
           </div>
 
