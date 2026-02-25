@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,10 +11,7 @@ const Navigation = () => {
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-primary">
-              <Calendar className="h-6 w-6 text-primary-foreground" />
-            </div>
-            <span className="text-xl font-bold text-foreground">AttendOnTime</span>
+            <img src="https://app.attendontime.com/brand/logo.png" alt="AttendOnTime" className="h-10 w-auto" />
           </div>
           
           {/* Desktop Navigation */}

@@ -1,7 +1,6 @@
-import { Calendar } from "lucide-react";
-
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const appVersion = import.meta.env.VITE_APP_VERSION;
   
   return (
     <footer className="border-t border-border bg-background py-12">
@@ -10,10 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-primary">
-                <Calendar className="h-6 w-6 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-bold text-foreground">AttendOnTime</span>
+              <img src="https://app.attendontime.com/brand/logo.png" alt="AttendOnTime" className="h-10 w-auto" />
             </div>
             <p className="text-sm text-muted-foreground">
               Streamlining event management and attendee check-in for organizations worldwide.
@@ -56,7 +52,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-border">
           <p className="text-center text-sm text-muted-foreground">
-            © {currentYear} AttendOnTime. All rights reserved.
+            Version {appVersion} • © {currentYear} AttendOnTime • All rights reserved
           </p>
         </div>
       </div>
