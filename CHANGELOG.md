@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.1.0...attendontime-landing-v1.2.0) (2026-02-25)
+
+
+### Features
+
+* update logo to brand asset and add version string to footer ([#81](https://github.com/dzenyu/attendontime-landing/issues/81)) ([945c13c](https://github.com/dzenyu/attendontime-landing/commit/945c13c41b11752f8df65b2b316c84c59e456aca))
+
 ## [1.1.0](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.0.0...attendontime-landing-v1.1.0) (2026-02-25)
 
 
