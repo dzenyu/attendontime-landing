@@ -47,5 +47,11 @@ export const speakers: Speaker[] = [
     title: "Titan Shape",
     image: "/profile-tania-shape.png",
     alt: "Tania Nawazkhan",
+  },
+  {
+    name: "Cindy Gwekwerere",
+    title: "Finance",
+    image: "/profile-cindy-gwekwerere.jpeg",
+    alt: "Cindy Gwekwerere",
   }
 ];
