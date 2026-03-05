@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.2.0...attendontime-landing-v1.3.0) (2026-03-05)
+
+
+### Features
+
+* add Cindy Gwekwerere to speakers list with profile image ([#93](https://github.com/dzenyu/attendontime-landing/issues/93)) ([bc7ad1c](https://github.com/dzenyu/attendontime-landing/commit/bc7ad1c97a46b652e042195511f227794d7c89c8))
+* **deps:** bump react-day-picker from 9.13.2 to 9.14.0 ([#92](https://github.com/dzenyu/attendontime-landing/issues/92)) ([8aec7f6](https://github.com/dzenyu/attendontime-landing/commit/8aec7f648bb94aa206666b853fb87445a69062e6))
+
 ## [1.2.0](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.1.0...attendontime-landing-v1.2.0) (2026-02-25)
 
 
