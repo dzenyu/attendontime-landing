@@ -49,9 +49,9 @@ export const speakers: Speaker[] = [
     alt: "Tania Nawazkhan",
   },
   {
-    name: "Cindy Gwekwerere",
+    name: "Cindy Masoha",
     title: "Finance",
-    image: "/profile-cindy-gwekwerere.jpeg",
-    alt: "Cindy Gwekwerere",
+    image: "/profile-cindy-masoha.jpeg",
+    alt: "Cindy Masoha",
   }
 ];
