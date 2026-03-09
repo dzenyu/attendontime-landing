@@ -50,7 +50,7 @@ export const speakers: Speaker[] = [
   },
   {
     name: "Cindy Masoha",
-    title: "Finance",
+    title: "Personal Finance 101",
     image: "/profile-cindy-masoha.jpeg",
     alt: "Cindy Masoha",
   }
