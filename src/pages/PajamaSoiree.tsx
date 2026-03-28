@@ -17,7 +17,7 @@ const PajamaSoiree = () => {
   const pageUrl = "https://attendontime.com/pajama-soiree";
   const imageUrl = "https://attendontime.com/payment-pajama-soiree.png";
   const eventTitle = "Elevated Love Letter to a Young Sister - Pajama Soiree";
-  const eventDescription = "Join us for an inspiring Pajama Soiree on March 28, 2026, in Frisco, TX. Interactive sessions on women's health, financial literacy, estate planning, and empowerment. Enjoy live music, curated cuisine, and meaningful conversations. Rock your RED or PINK pajamas!";
+  const eventDescription = "Join us for an inspiring Pajama Soiree on March 28, 2026, in Frisco, Texas. Interactive sessions on women's health, financial literacy, estate planning, and empowerment. Enjoy live music, curated cuisine, and meaningful conversations. Rock your RED or PINK pajamas!";
 
   const structuredData = useMemo(() => ({
     "@context": "https://schema.org",
@@ -33,7 +33,7 @@ const PajamaSoiree = () => {
       "name": "Founders Hall - Canals at Grand Park",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "7878 Washburne Drive",
+        "streetAddress": "7875 Washburne Drive",
         "addressLocality": "Frisco",
         "addressRegion": "TX",
         "postalCode": "75034",
@@ -366,10 +366,10 @@ const PajamaSoiree = () => {
               Founders Hall - Canals at Grand Park
             </p>
             <p className="text-lg md:text-xl">
-              7878 Washburne Drive
+              7875 Washburne Drive
             </p>
             <p className="text-lg md:text-xl">
-              Frisco, TX 75034
+              Frisco, Texas, 75034
             </p>
             <button
               onClick={() => setShowMap(!showMap)}
@@ -388,7 +388,7 @@ const PajamaSoiree = () => {
                   <X size={20} className="text-red-700" />
                 </button>
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3343.6!2d-96.824!3d33.131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c3c8b1f3fffff%3A0x0!2s7878+Washburne+Drive%2C+Frisco%2C+TX+75034!5e0!3m2!1sen!2sus!4v1700000000000"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3343.6!2d-96.824!3d33.131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864c3c8b1f3fffff%3A0x0!2s7875+Washburne+Drive%2C+Frisco%2C+TX+75034!5e0!3m2!1sen!2sus!4v1700000000000"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}
