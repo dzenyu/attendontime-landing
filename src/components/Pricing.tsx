@@ -142,8 +142,9 @@ const Pricing = () => {
                       : ''
                   }`}
                   variant={plan.popular ? 'default' : 'outline'}
+                  asChild
                 >
-                  Get Started
+                  <a href="https://app.attendontime.com/register">Get Started</a>
                 </Button>
               </CardFooter>
             </Card>

@@ -32,11 +32,11 @@ const Navigation = () => {
           
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
-              Sign In
+            <Button variant="ghost" size="sm" asChild>
+              <a href="https://app.attendontime.com/login">Sign In</a>
             </Button>
-            <Button size="sm" className="bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow transition-all">
-              Get Started
+            <Button size="sm" className="bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow transition-all" asChild>
+              <a href="https://app.attendontime.com/register">Get Started</a>
             </Button>
           </div>
           
@@ -66,11 +66,11 @@ const Navigation = () => {
                 Contact
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
-                <Button variant="ghost" size="sm" className="w-full">
-                  Sign In
+                <Button variant="ghost" size="sm" className="w-full" asChild>
+                  <a href="https://app.attendontime.com/login">Sign In</a>
                 </Button>
-                <Button size="sm" className="w-full bg-gradient-primary text-primary-foreground">
-                  Get Started
+                <Button size="sm" className="w-full bg-gradient-primary text-primary-foreground" asChild>
+                  <a href="https://app.attendontime.com/register">Get Started</a>
                 </Button>
               </div>
             </div>
