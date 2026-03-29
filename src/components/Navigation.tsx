@@ -27,7 +27,7 @@ const Navigation = () => {
             <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               About
             </a>
-            <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <a href={`${AOT_BASE_APP_URL}/support#contact`} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
           </div>
@@ -64,7 +64,7 @@ const Navigation = () => {
               <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 About
               </a>
-              <a href="#" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+              <a href={`${AOT_BASE_APP_URL}/support#contact`} className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
                 Contact
               </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-border">
