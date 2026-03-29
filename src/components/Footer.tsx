@@ -36,7 +36,7 @@ const Footer = () => {
               <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><a href={`${AOT_BASE_APP_URL}/support#contact`} className="hover:text-primary transition-colors">Contact</a></li>
             </ul>
           </div>
           
@@ -45,7 +45,7 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Legal</h3>
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li><a href="#" className="hover:text-primary transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Terms of Service</a></li>
+              <li><a href={`${AOT_BASE_APP_URL}/terms`} className="hover:text-primary transition-colors">Terms of Service</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Security</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Compliance</a></li>
             </ul>
