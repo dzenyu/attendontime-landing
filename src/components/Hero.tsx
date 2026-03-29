@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
+const AOT_BASE_APP_URL = import.meta.env.VITE_AOT_BASE_APP_URL || "https://app.attendontime.com";
+
 const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
@@ -30,9 +32,12 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 className="bg-gradient-primary text-primary-foreground shadow-soft hover:shadow-glow transition-all"
+                asChild
               >
-                Get Started Free
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <a href={`${AOT_BASE_APP_URL}/register`}>
+                  Get Started Free
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
               <Button 
                 size="lg" 

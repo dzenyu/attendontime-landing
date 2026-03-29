@@ -1,3 +1,5 @@
+const AOT_BASE_APP_URL = import.meta.env.VITE_AOT_BASE_APP_URL || "https://app.attendontime.com";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const appVersion = import.meta.env.VITE_APP_VERSION;
@@ -9,7 +11,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <img src="https://app.attendontime.com/brand/logo.png" alt="AttendOnTime" className="h-10 w-auto" />
+              <img src={`${AOT_BASE_APP_URL}/brand/logo.png`} alt="AttendOnTime" className="h-10 w-auto" />
             </div>
             <p className="text-sm text-muted-foreground">
               Streamlining event management and attendee check-in for organizations worldwide.

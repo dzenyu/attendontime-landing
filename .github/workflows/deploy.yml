@@ -27,6 +27,8 @@ jobs:
       - name: Build
         id: build_step
         run: npm run build
+        env:
+          VITE_AOT_BASE_APP_URL: ${{ vars.VITE_AOT_BASE_APP_URL || 'https://app.attendontime.com' }}
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:

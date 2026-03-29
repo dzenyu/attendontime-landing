@@ -2,6 +2,8 @@ import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 
+const AOT_BASE_APP_URL = import.meta.env.VITE_AOT_BASE_APP_URL || "https://app.attendontime.com";
+
 const pricingPlans = [
   {
     id: 'free',
@@ -142,8 +144,9 @@ const Pricing = () => {
                       : ''
                   }`}
                   variant={plan.popular ? 'default' : 'outline'}
+                  asChild
                 >
-                  Get Started
+                  <a href={`${AOT_BASE_APP_URL}/register`}>Get Started</a>
                 </Button>
               </CardFooter>
             </Card>
