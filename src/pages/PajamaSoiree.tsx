@@ -1,5 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
-import { Heart, Sparkles, Instagram, MapPin, X, Share2, Link, Check } from "lucide-react";
+import { SiInstagram } from "@icons-pack/react-simple-icons";
+import { Heart, Sparkles, MapPin, X, Share2, Link, Check } from "lucide-react";
 import { speakers } from "../data/pajamaSoireeSpeakers";
 
 const sparklePositions = Array.from({ length: 30 }, () => ({
@@ -522,7 +523,7 @@ const PajamaSoiree = () => {
               className="inline-flex items-center gap-3 text-3xl md:text-4xl font-serif italic text-red-700 hover:text-red-800 transition-colors group"
             >
               <span>Curated by Mujoy Events</span>
-              <Instagram className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-110 transition-transform" />
+              <SiInstagram className="w-8 h-8 md:w-10 md:h-10 group-hover:scale-110 transition-transform" color="currentColor" />
             </a>
           </div>
         </div>
