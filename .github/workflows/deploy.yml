@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -24,8 +24,8 @@ jobs:
           version: 10
       - uses: actions/setup-node@v3
         with:
-          node-version: '22'
-          cache: 'pnpm'
+          node-version: "24"
+          cache: "pnpm"
       - name: Install
         run: pnpm install --frozen-lockfile
       - name: Build
