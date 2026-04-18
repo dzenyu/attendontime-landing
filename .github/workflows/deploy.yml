@@ -2,9 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -19,14 +19,18 @@ jobs:
       built: ${{ steps.build_step.outcome }}
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
       - uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: "24"
+          cache: "pnpm"
       - name: Install
-        run: npm ci
+        run: pnpm install --frozen-lockfile
       - name: Build
         id: build_step
-        run: npm run build
+        run: pnpm build
         env:
           VITE_AOT_BASE_APP_URL: ${{ vars.VITE_AOT_BASE_APP_URL || 'https://app.attendontime.com' }}
       - name: Upload build artifact
