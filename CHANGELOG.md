@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.3.0...attendontime-landing-v1.3.1) (2026-04-18)
+
+
+### Bug Fixes
+
+* resolve React version mismatch (react-dom 19.2.4 -&gt; 19.2.5) ([#149](https://github.com/dzenyu/attendontime-landing/issues/149)) ([44096d2](https://github.com/dzenyu/attendontime-landing/commit/44096d253b53bda8270edb25ba49c436e275f8e2))
+
 ## [1.3.0](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.2.0...attendontime-landing-v1.3.0) (2026-03-05)
 
 
