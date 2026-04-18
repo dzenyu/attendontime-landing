@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PajamaSoiree from "./pages/PajamaSoiree";
+import Redirect from "./pages/Redirect";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,12 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/pajama-soiree" element={<PajamaSoiree />} />
+          {/* Redirect routes to app subdomain */}
+          <Route path="/login" element={<Redirect to="/login" />} />
+          <Route path="/register" element={<Redirect to="/register" />} />
+          <Route path="/privacy" element={<Redirect to="/privacy" />} />
+          <Route path="/terms" element={<Redirect to="/terms" />} />
+          <Route path="/support" element={<Redirect to="/support" />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
