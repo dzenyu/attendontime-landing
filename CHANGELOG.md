@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.3.1...attendontime-landing-v1.3.2) (2026-04-20)
+
+
+### Miscellaneous Chores
+
+* force next release to 1.3.2 ([2bb7b6d](https://github.com/dzenyu/attendontime-landing/commit/2bb7b6d0b953470a7367dc18539b0cfeefdd3081))
+
 ## [1.3.1](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.3.0...attendontime-landing-v1.3.1) (2026-04-18)
 
 
