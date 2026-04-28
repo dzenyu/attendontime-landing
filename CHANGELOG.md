@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.3.2...attendontime-landing-v1.4.0) (2026-04-28)
+
+
+### Miscellaneous Chores
+
+* force next release to 1.4.0 ([b75dd2d](https://github.com/dzenyu/attendontime-landing/commit/b75dd2dfab1be1b448c71d837aa2682e4a969157))
+
 ## [1.3.2](https://github.com/dzenyu/attendontime-landing/compare/attendontime-landing-v1.3.1...attendontime-landing-v1.3.2) (2026-04-20)
 
 
