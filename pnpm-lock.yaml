@@ -199,8 +199,8 @@ importers:
         specifier: ^17.6.0
         version: 17.6.0
       lovable-tagger:
-        specifier: ^1.1.13
-        version: 1.1.13(vite@7.3.2(@types/node@25.6.0)(jiti@1.21.7)(lightningcss@1.32.0))
+        specifier: ^1.3.0
+        version: 1.3.0(vite@7.3.2(@types/node@25.6.0)(jiti@1.21.7)(lightningcss@1.32.0))
       postcss:
         specifier: ^8.5.13
         version: 8.5.13
@@ -2014,6 +2014,10 @@ packages:
     resolution: {integrity: sha512-otxSQPw4lkOZWkHpB3zaEQs6gWYEsmX4xQF68ElXC/TWvGxGMSGOvoNbaLXm6/cS/fSfHtsEdw90y20PCd+sCA==}
     engines: {node: '>=10.13.0'}
 
+  es-errors@1.3.0:
+    resolution: {integrity: sha512-Zf5H2Kxt2xjTvbJvP2ZWLEICxA6j+hAmMzIlypy4xcBg1vKVnx89Wy0GbS+kf5cwCVFFzdCFh2XSCFNULS6csw==}
+    engines: {node: '>= 0.4'}
+
   es-toolkit@1.45.1:
     resolution: {integrity: sha512-/jhoOj/Fx+A+IIyDNOvO3TItGmlMKhtX8ISAHKE90c4b/k1tqaqEZ+uUqfpU8DMnW5cgNJv606zS55jGvza0Xw==}
 
@@ -2169,8 +2173,8 @@ packages:
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
 
-  hasown@2.0.2:
-    resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
+  hasown@2.0.3:
+    resolution: {integrity: sha512-ej4AhfhfL2Q2zpMmLo7U1Uv9+PyhIZpgQLGT1F9miIGmiCJIoCgSmczFdrc97mWT4kVY72KA+WnnhJ5pghSvSg==}
     engines: {node: '>= 0.4'}
 
   hermes-estree@0.25.1:
@@ -2348,10 +2352,10 @@ packages:
     resolution: {integrity: sha512-iPZK6eYjbxRu3uB4/WZ3EsEIMJFMqAoopl3R+zuq0UjcAm/MO6KCweDgPfP3elTztoKP3KtnVHxTn2NHBSDVUw==}
     engines: {node: '>=10'}
 
-  lovable-tagger@1.1.13:
-    resolution: {integrity: sha512-RBEYDxao7Xf8ya29L0cd+ocE7Gs80xPOIOwwck65Hoie8YDKViuXi3UYV14DoNWIvaJ7WVPf7SG3cc844nFqGA==}
+  lovable-tagger@1.3.0:
+    resolution: {integrity: sha512-X2TX4g+/8VUFIBboGBjgXIdjEhR1ojtz9W65MO3g069DXTX5PPFZ4ihQzzociTL9HCwCC8SleVGT/wcfURhMXA==}
     peerDependencies:
-      vite: '>=5.0.0 <8.0.0'
+      vite: '>=5.0.0 <9.0.0'
 
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
@@ -2630,8 +2634,8 @@ packages:
   reselect@5.1.1:
     resolution: {integrity: sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==}
 
-  resolve@1.22.11:
-    resolution: {integrity: sha512-RfqAvLnMl313r7c9oclB1HhUEAezcpLjz95wFH4LVuhk9JF/r22qmVP9AMmOU4vMX7Q8pN8jwNg/CSpdFnMjTQ==}
+  resolve@1.22.12:
+    resolution: {integrity: sha512-TyeJ1zif53BPfHootBGwPRYT1RUt6oGWsaQr8UyZW/eAm9bKoijtvruSDEmZHm92CwS9nj7/fWttqPCgzep8CA==}
     engines: {node: '>= 0.4'}
     hasBin: true
 
@@ -4486,6 +4490,8 @@ snapshots:
       graceful-fs: 4.2.11
       tapable: 2.3.3
 
+  es-errors@1.3.0: {}
+
   es-toolkit@1.45.1: {}
 
   esbuild@0.25.12:
@@ -4698,7 +4704,7 @@ snapshots:
 
   graceful-fs@4.2.11: {}
 
-  hasown@2.0.2:
+  hasown@2.0.3:
     dependencies:
       function-bind: 1.1.2
 
@@ -4731,7 +4737,7 @@ snapshots:
 
   is-core-module@2.16.1:
     dependencies:
-      hasown: 2.0.2
+      hasown: 2.0.3
 
   is-extglob@2.1.1: {}
 
@@ -4825,7 +4831,7 @@ snapshots:
     dependencies:
       p-locate: 5.0.0
 
-  lovable-tagger@1.1.13(vite@7.3.2(@types/node@25.6.0)(jiti@1.21.7)(lightningcss@1.32.0)):
+  lovable-tagger@1.3.0(vite@7.3.2(@types/node@25.6.0)(jiti@1.21.7)(lightningcss@1.32.0)):
     dependencies:
       esbuild: 0.25.12
       tailwindcss: 3.4.19
@@ -4920,7 +4926,7 @@ snapshots:
       postcss: 8.5.13
       postcss-value-parser: 4.2.0
       read-cache: 1.0.0
-      resolve: 1.22.11
+      resolve: 1.22.12
 
   postcss-js@4.1.0(postcss@8.5.13):
     dependencies:
@@ -5075,8 +5081,9 @@ snapshots:
 
   reselect@5.1.1: {}
 
-  resolve@1.22.11:
+  resolve@1.22.12:
     dependencies:
+      es-errors: 1.3.0
       is-core-module: 2.16.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
@@ -5179,7 +5186,7 @@ snapshots:
       postcss-load-config: 6.0.1(jiti@1.21.7)(postcss@8.5.13)
       postcss-nested: 6.2.0(postcss@8.5.13)
       postcss-selector-parser: 6.1.2
-      resolve: 1.22.11
+      resolve: 1.22.12
       sucrase: 3.35.1
     transitivePeerDependencies:
       - tsx
